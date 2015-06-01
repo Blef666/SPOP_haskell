@@ -1,0 +1,27 @@
+dane u¿ywane:
+n = liczba kolumn
+m = liczba wierszy
+tx = tablica opisów kolumn
+tx[i] = opis kolumny i (np. [1,3])
+ty = tablica opisów wierszy
+ty[j] = opis wiersza j (np. [1,3])
+
+Format wejœciowy: [[int]]
+Format wyjœciowy: [[Bool]] - lista [n,m]
+
+Algorytm sk³ada siê z 3 faz zapêtlonych: 
+	1. zakreœlanie poprawnych pól
+	2. usuwanie z tablic opisów zu¿ytych elementów
+	3. wykreœlanie niemo¿liwych do osadzenia pól (na podstawie 1 i 2)
+	
+
+1. Uzupe³niæ wszystkie kolumny/wiersze, których pe³n¹ d³ugoœæ mamy podan¹.
+	Jeœli n = suma (tx[i]) - (k - 1)
+	gdzie k to liczba elementów w opisie wiersza/kolumy
+2. Uzupe³niæ kolumny/wiersze cz¹stkowymi danymi
+	Jeœli n/2 < suma (tx[i]) - (k - 1)
+3. osadzenie elementów 
+4. bruteforce
+
+
+jeœli istnieje tx[i] > n - suma(tx[i]) + (k - 1), to mo¿na wstawiæ dla niego gdzieœ pole.
