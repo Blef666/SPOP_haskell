@@ -1,7 +1,9 @@
 import Data.List.Split
 import System.Environment
 
+-- Puzzle (Columns) (Rows)
 data Puzzle = Puzzle [[Int]] [[Int]] deriving Show
+type Picture = [[Char]]
 
 rInt :: String -> [[Int]]
 rInt a = read a
@@ -12,12 +14,16 @@ getVertical (Puzzle t _) = t
 getHorizontal :: Puzzle -> [[Int]]
 getHorizontal (Puzzle _ t) = t
 
---readPuzzle = map read (splitOn "\n" (readFile "examples/5x5_psi.txt"))
---readPuzzle = splitOn "\n" (file)
---			where
---				file <- readFile "examples/5x5_psi.txt"
+verticalLength (Puzzle t _) = length t
+horizontalLength (Puzzle _ t) = length t
 
-
+initPicture :: Int -> Int -> Picture
+initPicture 0 _ = []
+initPicture n m = (initRow m) : (initPicture (n - 1) m)
+			where
+				initRow 0 = []
+				initRow m = ' ' : (initRow (m - 1))
+				
 -- przyklad odpalenia programu:
 -- :main "examples/5x5_psi.txt"
 main = do 
@@ -28,3 +34,5 @@ main = do
 			print (getVertical x)
 			print (getHorizontal x)
 			print (args)
+
+-- s = solvePuzzle 
